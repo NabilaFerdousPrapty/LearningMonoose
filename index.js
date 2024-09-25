@@ -6,9 +6,14 @@ const cors = require('cors');
 app.use(cors());
 
 //database connection with mongoose
-mongoose.connect('mongodb://localhost/LetsDo', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDB...'))
-    .catch(err => console.error('Could not connect to MongoDB...'));
+const connectDB = async () => {
+    try {
+      const conn = await mongoose.connect('mongodb://localhost/LetsDo' );
+        }
+    catch (err) {
+        console.log(err);
+        }
+  }
 
 //error handler
 function errorHandler(err, req, res, next) {
